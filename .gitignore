@@ -1,3 +1,25 @@
+# macOS
+.DS_Store
+Icon?
+._*
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Output intermediates
+04_output/*.tmp
+
+# Large data files
+01_data/*.csv
+01_data/*.rds
+
+00_admin/
+99_sandbox/
+scratch.md
+
 # ── Credentials — NEVER commit these ─────────────────────────────────
 .Renviron
 .env
@@ -46,3 +68,5 @@ models/
 
 # ── Scratch files ───────────────────────────────────────────────────────
 scratch.md
+
+
