@@ -10,7 +10,7 @@
 - `05_outputs/` — figures, tables, rendered documents
 - `06_archive/` — completed work, retained for reference
 - `99_sandbox/` — triage area, gitignored
-- `README.md`
+- `README.md` - this file
 - `scratch.md` — session scratchpad, gitignored
 - `WATERSHED.md` — parked decisions and unresolved questions
 
