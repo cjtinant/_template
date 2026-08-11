@@ -17,6 +17,7 @@ Icon?
 01_data/*.rds
 
 00_admin/
+99_archive/
 99_sandbox/
 scratch.md
 
