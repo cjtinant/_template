@@ -1,26 +1,3 @@
-# macOS
-.DS_Store
-Icon?
-._*
-
-# R
-.Rhistory
-.RData
-.Rproj.user/
-*.Rproj
-
-# Output intermediates
-04_output/*.tmp
-
-# Large data files
-01_data/*.csv
-01_data/*.rds
-
-00_admin/
-99_archive/
-99_sandbox/
-scratch.md
-
 # ── Credentials — NEVER commit these ─────────────────────────────────
 .Renviron
 .env
@@ -39,8 +16,28 @@ __pycache__/
 *.pyd
 .Python
 
+# ── R ────────────────────────────────────────────────────────────────
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj.user/
+*.Rproj
+
+# ── macOS ────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+.DS_Store
+Icon?
+._*
+
+# ── Model cache ───────────────────────────────────────────────────────
+.cache/
+models/
+00_admin/
+
 # ── Output files (transcripts, summaries) ────────────────────────────
-output/*
+05_output/*
 !output/.gitkeep
 
 # ── Audio files ───────────────────────────────────────────────────────
@@ -51,23 +48,9 @@ output/*
 *.ogg
 *.flac
 
-# ── R ────────────────────────────────────────────────────────────────
-.Rhistory
-.RData
-.Ruserdata
-*.Rproj.user/
-
-# ── macOS ────────────────────────────────────────────────────────────
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# ── Model cache ───────────────────────────────────────────────────────
-.cache/
-models/
-00_admin/
-
-# ── Scratch files ───────────────────────────────────────────────────────
+# ── Scratch files and Input intermediates ───────────────────────────────
+_inbox/
 scratch.md
 
-
+# Private administrative files
+00_admin/
