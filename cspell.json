@@ -1,0 +1,18 @@
+{
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "ensurepath",
+        "markitdown",
+        "Markitdown",
+        "pandoc",
+        "Pandoc",
+        "Pandoc's",
+        "pipx",
+        "pipx's"
+    ],
+    "ignoreWords": [],
+    "import": []
+}
