@@ -1,4 +1,4 @@
-# Make a New Repo
+# Working with version control
 
 ## Clean new repo
 
@@ -38,4 +38,15 @@ Instead, change the remote to your new repo:
 git remote set-url origin https://github.com/your-username/new-repo.git
 git push -u origin main
 
+```
+
+## Remove a file that has been pushed
+
+This removes it going forward; it still exists in earlier commits if anyone
+checks history.
+
+```zsh
+git rm path/to/file
+git commit -m "Remove path/to/file"
+git push
 ```
