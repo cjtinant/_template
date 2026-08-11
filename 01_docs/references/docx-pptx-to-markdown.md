@@ -1,36 +1,53 @@
-# Converting DOCX and PPTX to Markdown
+# Converting files to Markdown format
 
-## Short answer
+Use `Pandoc` for docx, and `markitdown` for pptx. Spot-check the output against
+the source before treating it as a clean copy. Note, complex layouts and text
+boxes are often flattened or dropped. Slide design and animations aren't
+represented in markdown at all — text only
 
-- **DOCX → MD:** Pandoc. Best fidelity for headings, lists, tables, footnotes.
-- **PPTX → MD:** Pandoc can't read pptx as input (only writes it). Use
-  `markitdown` instead.
-
-If you want a single tool for both formats, `markitdown` covers docx and pptx,
-but its docx output is plainer than Pandoc's — fewer style options, no
-media-extraction control.
-
-## DOCX → Markdown (Pandoc)
+- **Pandoc:** best fidelity for headings, lists, tables, footnotes. Pandoc can't
+  read pptx as input (only writes it). Use `markitdown` instead. Pandoc handles
+  nested lists, tables, footnotes, and basic styles cleanly. Text boxes, tracked
+  changes, and comments won't survive — review the output rather than assuming
+  1:1 fidelity.
 
 ```zsh
-brew install pandoc   # if not already installed
 pandoc input.docx -o output.md
 ```
 
-To pull embedded images out to a folder instead of losing them:
+- **Images:** are extracted as separate files, not inlined. To pull embedded
+  images out to a folder instead of losing them:
 
 ```zsh
 pandoc input.docx -o output.md --extract-media=./media
 ```
 
-Pandoc handles nested lists, tables, footnotes, and basic styles cleanly. Text
-boxes, tracked changes, and comments won't survive — review the output rather
-than assuming 1:1 fidelity.
+- **markitdown:** covers docx and pptx, but its docx output is plainer than
+  Pandoc's — fewer style options, no media-extraction control. `markitdown`
+  turns each slide's text and speaker notes into a markdown section
+  (`## Slide N`). It also handles docx, xlsx, and pdf, if a single tool across
+  formats is worth the fidelity trade-off.
 
-## PPTX → Markdown (markitdown)
+```zsh
+markitdown input.pptx > output.md
+```
 
-Pandoc's input-format list doesn't include pptx–so use `markitdown`, which is a
-python tool.
+## Installing tools
+
+### Pandoc
+
+```zsh
+brew install pandoc   # if not already installed
+```
+
+## Markitdown
+
+```zsh
+# run once
+brew install pipx    # upgrades pipx
+pipx ensurepath      # adds pipx's bin dir to PATH, only needed once
+pipx install markitdown
+```
 
 ### Python aside about pipx
 
@@ -49,31 +66,3 @@ markitdown, symlinks its entry point (the `markitdown` command) into a shared
 bin directory on your PATH, and you never think about which venv you're in to
 run it. Under the hood it's still pip and venv — pipx is just the workflow layer
 that automates "one isolated env per tool, command exposed globally."
-
-```zsh
-# run once
-brew install pipx    # upgrades pipx
-pipx ensurepath      # adds pipx's bin dir to PATH, only needed once
-pipx install markitdown
-```
-
-For pptx → md:
-
-```zsh
-markitdown input.pptx > output.md
-```
-
-`markitdown` turns each slide's text and speaker notes into a markdown section
-(`## Slide N`). It also handles docx, xlsx, and pdf, if a single tool across
-formats is worth the fidelity trade-off.
-
-## What gets lost either way
-
-- Images are extracted as separate files, not inlined
-- Complex layouts and text boxes are often flattened or dropped
-- Slide design and animations aren't represented in markdown at all — text only
-
-## Recommendation
-
-Pandoc for docx, `markitdown` for pptx (it's the only practical option there).
-Spot-check the output against the source before treating it as a clean copy.
